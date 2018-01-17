@@ -1,5 +1,5 @@
 {
-  "name": "lfs-inventory",
+  "name": "lfs-inventory-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

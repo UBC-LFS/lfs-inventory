@@ -1,4 +1,4 @@
-# lfs-inventory
+# lfs-inventory-client
 
 ## Available Scripts
 
