@@ -7,22 +7,35 @@ export default class FourthPage extends Component {
         }
     }
 
-    saveAndContinue(event) {
-        event.preventDefault()
-
-        var data = {
-            id: this.refs.id.getDOMNode().value,
-            user: this.refs.user.getDOMNode().value
-        }
-        this.props.saveValues(data)
-        this.props.nextStep()
-    }
-
     render() {
-        return <div>
-            <label>{this.props.field}</label>
-            <input></input>
-        </div>;
+        return (
+            <div>
+            <div className='row'>
+                <div className='six columns'>
+                <label>Your email</label>
+                <input
+                    className='u-full-width required'
+                    placeholder='test@mailbox.com'
+                    type='email'
+                    onChange={this.handleEmailChanged}
+                    value={this.state.email}
+                    autoFocus
+                />
+                </div>
+            </div>
+            <div className='row'>
+                <div className='six columns'>
+                <label>Confirm email</label>
+                <input
+                    className='u-full-width'
+                    placeholder='Confirm email'
+                    type='email'
+                    onChange={this.handleEmailConfirmChanged}
+                    value={this.state.emailConfirm}
+                />
+                </div>
+            </div>
+            </div>
+        )
     }
-
 }
