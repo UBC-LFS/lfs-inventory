@@ -1,9 +1,17 @@
 'use strict';
 
-import React, { Component } from 'react';
-import Step3 from './Step3'
-import Step5 from './Step5'
-import Step6 from './Step6'
+
+import React, {Component} from 'react'
+import FirstPage from './FirstPage'
+
+/*
+import SecondPage from './SecondPage'
+import ThirdPage from './ThirdPage'
+import FourthPage from './FourthPage'
+import FifthPage from './FifthPage'
+import FifthPage from './FifthPage'
+import LastPage from './LastPage'
+*/
 
 var StepZilla = require('react-stepzilla').default
 
@@ -12,10 +20,33 @@ export default class Example extends Component {
     super(props);
     this.state = {};
 
-    this.sampleStore = {
-      email: '',
-      gender: '',
-      savedToCloud: false
+    this.firstPageEntries = {
+      id: '', 
+      date: '', 
+      dateModified: '', 
+      user: ''
+    };
+
+    this.secondPageEntries = {
+      assetName: '',
+      assetModelNumber: '', 
+      assetSpecs: '',
+      assetSerialNumber: '',
+      assetTag: '',
+      assetOwner: ''
+
+    };
+
+    this.thirdPageEntries = {
+
+    };
+
+    this.forthPageEntries = {
+
+    };
+
+    this.fifthPageEntries = {
+
     };
   }
 
@@ -23,13 +54,29 @@ export default class Example extends Component {
 
   componentWillUnmount() {}
 
-  getStore() {
-    return this.sampleStore;
+  getFirstPageEntries() {
+    return this.firstPageEntries;
   }
 
-  updateStore(update) {
-    this.sampleStore = {
-      ...this.sampleStore,
+  getSecondPageEntries() {
+    return this.firstPageEntries;
+  }
+
+  getThirdPageEntries() {
+    return this.firstPageEntries;
+  }
+
+  getFourthPageEntries() {
+    return this.firstPageEntries;
+  }
+
+  getFifthPageEntries() {
+    return this.firstPageEntries;
+  }
+
+  updateFirstPageEntries(update) {
+    this.firstPageEntries = {
+      ...this.firstPageEntries,
       ...update,
     }
   }
@@ -37,19 +84,17 @@ export default class Example extends Component {
   render() {
     const steps =
     [
-      {name: 'Step3', component: <Step3 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'FirstPage', component: <FirstPage getFirstPageEntries={() => (this.getFirstPageEntries())} updateFirstPageEntries={(u) => {this.updateFirstPageEntries(u)}} />},
+      //{name: 'SecondPage', component: <SecondPage getStore={() => (this.getSecondPageEntries())} updateStore={(u) => {this.updateStore(u)}} />},
       /*
-      {name: 'Step2', component: <Step2 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'Step3', component: <Step3 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'step4', component: <Step4 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-    */
-      {name: 'Step5', component: <Step5 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'Step6', component: <Step6 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />}
-    
+      {name: 'ThirdPage', component: <ThirdPage getStore={() => (this.getThirdPageEntries())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'FourthPage', component: <FourthPage getStore={() => (this.getFourthPageEntries())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'FifthPage', component: <FifthPage getStore={() => (this.getFifthPageEntries())} updateStore={(u) => {this.updateStore(u)}} />}
+      */
     ]
 
     return (
-      <div className='example'>
+      <div className='form-container'>
         <div className='step-progress'>
           <StepZilla
             steps={steps}
