@@ -3,15 +3,9 @@
 
 import React, {Component} from 'react'
 import FirstPage from './FirstPage'
-
-/*
 import SecondPage from './SecondPage'
 import ThirdPage from './ThirdPage'
 import FourthPage from './FourthPage'
-import FifthPage from './FifthPage'
-import FifthPage from './FifthPage'
-import LastPage from './LastPage'
-*/
 
 var StepZilla = require('react-stepzilla').default
 
@@ -20,32 +14,33 @@ export default class Example extends Component {
     super(props);
     this.state = {};
 
-    this.firstPageEntries = {
+    this.store = {
       id: '', 
       date: '', 
       dateModified: '', 
-      user: ''
-    };
+      user: '',
 
-    this.secondPageEntries = {
       assetName: '',
       assetModelNumber: '', 
       assetSpecs: '',
       assetSerialNumber: '',
       assetTag: '',
-      assetOwner: ''
+      assetOwner: '',
 
-    };
+      modelYear: '',
+      speedChart: '',
+      vendor: '',
+      jvNumber: '',
+      datePurchased: '',
+      currentUser: '',
+      previousUser: '',
 
-    this.thirdPageEntries = {
-
-    };
-
-    this.forthPageEntries = {
-
-    };
-
-    this.fifthPageEntries = {
+      assetLocation: '',
+      disposalDate: '',
+      methodOfDisposal: '',
+      userType: '',
+      unitAffiliation: '',
+      cost: ''
 
     };
   }
@@ -54,29 +49,13 @@ export default class Example extends Component {
 
   componentWillUnmount() {}
 
-  getFirstPageEntries() {
-    return this.firstPageEntries;
+  getStore() {
+    return this.store;
   }
 
-  getSecondPageEntries() {
-    return this.firstPageEntries;
-  }
-
-  getThirdPageEntries() {
-    return this.firstPageEntries;
-  }
-
-  getFourthPageEntries() {
-    return this.firstPageEntries;
-  }
-
-  getFifthPageEntries() {
-    return this.firstPageEntries;
-  }
-
-  updateFirstPageEntries(update) {
-    this.firstPageEntries = {
-      ...this.firstPageEntries,
+  updateStore(update) {
+    this.store = {
+      ...this.store,
       ...update,
     }
   }
@@ -84,14 +63,11 @@ export default class Example extends Component {
   render() {
     const steps =
     [
-      {name: 'FirstPage', component: <FirstPage getFirstPageEntries={() => (this.getFirstPageEntries())} updateFirstPageEntries={(u) => {this.updateFirstPageEntries(u)}} />},
-      //{name: 'SecondPage', component: <SecondPage getStore={() => (this.getSecondPageEntries())} updateStore={(u) => {this.updateStore(u)}} />},
-      /*
-      {name: 'ThirdPage', component: <ThirdPage getStore={() => (this.getThirdPageEntries())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'FourthPage', component: <FourthPage getStore={() => (this.getFourthPageEntries())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'FifthPage', component: <FifthPage getStore={() => (this.getFifthPageEntries())} updateStore={(u) => {this.updateStore(u)}} />}
-      */
-    ]
+      {name: 'FirstPage', component: <FirstPage getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'SecondPage', component: <SecondPage getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'ThirdPage', component: <ThirdPage getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'FourthPage', component: <FourthPage getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+       ]
 
     return (
       <div className='form-container'>
@@ -99,7 +75,7 @@ export default class Example extends Component {
           <StepZilla
             steps={steps}
             preventEnterSubmission={true}
-            nextTextOnFinalActionStep={"Save"}
+            nextTextOnFinalActionStep={"Submit"}
             hocValidationAppliedTo={[3]}
             startAtStep={window.sessionStorage.getItem('step') ? parseFloat(window.sessionStorage.getItem('step')) : 0}
             onStepChange={(step) => window.sessionStorage.setItem('step', step)}

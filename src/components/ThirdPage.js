@@ -2,17 +2,18 @@
 
 import React, {Component} from 'react'
 
-export default class FourthPage extends Component {
+export default class ThirdPage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            assetLocation: props.getStore().assetLocation,
-            disposalDate: props.getStore().disposalDate,
-            methodOfDisposal: props.getStore().methodOfDisposal,
-            userType: props.getStore().userType,
-            unitAffiliation: props.getStore().unitAffiliation,
-            cost: props.getStore().cost,
+            modelYear: props.getStore().modelYear,
+            speedChart: props.getStore().speedChart,
+            vendor: props.getStore().vendor,
+            jvNumber: props.getStore().jvNumber,
+            datePurchased: props.getStore().datePurchased,
+            currentUser: props.getStore().currentUser,
+            previousUser: props.getStore().previousUser
         };
     // this flag enables onBlur validation as user fills forms
         this._validateOnDemand = true; 
@@ -32,15 +33,20 @@ export default class FourthPage extends Component {
   
         // if full validation passes then save to store and pass as valid
         if (Object.keys(validateNewInput).every((k) => { return validateNewInput[k] === true })) {
-            if (this.props.getStore().cost != userInput.cost) { // only update store of something changed
+            if (this.props.getStore().modelYear != userInput.modelYear) { // only update store of something changed
                 this.props.updateStore({
                     ...userInput,
                     savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
                 });  // Update store here (this is just an example, in reality you will do it via redux or flux)
             }
-            this.setState(Object.assign(userInput, validateNewInput, this._validationErrors(validateNewInput)));
-            return isDataValid;
+            isDataValid = true;
         }
+        else {
+            // if anything fails then update the UI validation state but NOT the UI Data State
+            this.setState(Object.assign(userInput, validateNewInput, this._validationErrors(validateNewInput)));
+        }
+  
+        return isDataValid;
     }
   
     validationCheck() {
@@ -57,13 +63,13 @@ export default class FourthPage extends Component {
       return  {
           //required: regex w3c uses in html5
           //assetName validation: 
-          costVal: /[0-9]*$/.test(data.cost)         
+          modelYearVal: /[0-9]{4}$/.test(data.modelYear)         
       }
     }
   
     _validationErrors(val) {
       const errMsgs = {
-        costValMsg: val.costVal ? '' : 'A valid cost is required'
+        modelYearValMsg: val.modelYearVal ? '' : 'A valid year is required'
         /*
         assetSpecsValMsg: val.idVal ? '' : 'A user input is required',
         assetSerialNumberValMsg: val.dateVal ? '' : 'A valid date is required',
@@ -71,17 +77,19 @@ export default class FourthPage extends Component {
         assetOwnerValMsg: val.dateVal ? '' : 'A valid date is required'
         */
       }
+  
       return errMsgs;
     }
   
     _grabUserInput() {
       return {
-        assetLocation: this.refs.assetLocation.value,
-        disposalDate: this.refs.disposalDate.value,
-        methodOfDisposal: this.refs.methodOfDisposal.value,
-        userType: this.refs.userType.value,
-        unitAffiliation: this.refs.unitAffiliation.value,
-        cost: this.refs.cost.value
+        modelYear: this.refs.modelYear.value,
+        speedChart: this.refs.speedChart.value,
+        vendor: this.refs.vendor.value,
+        jvNumber: this.refs.jvNumber.value,
+        datePurchased: this.refs.datePurchased.value,
+        currentUser: this.refs.currentUser.value,
+        previousUser: this.refs.previousUser.value,
       };
     }
   
@@ -89,12 +97,12 @@ export default class FourthPage extends Component {
       // explicit class assigning based on validation
       let notValidClasses = {};
   
-      if (typeof this.state.costVal == 'undefined' || this.state.costVal) {
-        notValidClasses.costCls = 'no-error col-md-8';
+      if (typeof this.state.modelYearVal == 'undefined' || this.state.modelYearVal) {
+        notValidClasses.modelYearCls = 'no-error col-md-8';
       }
       else {
-        notValidClasses.costCls = 'has-error col-md-8';
-        notValidClasses.costValGrpCls = 'val-err-tooltip';
+        notValidClasses.modelYearCls = 'has-error col-md-8';
+        notValidClasses.modelYearValGrpCls = 'val-err-tooltip';
       }
 
       return (
@@ -112,111 +120,111 @@ export default class FourthPage extends Component {
               </div>
               <div className="form-group col-md-12 content form-block-holder">
                   <label className="control-label col-md-4"> 
-                    Asset Location
+                    Model Year
                   </label>
-                  <div className={notValidClasses.idCls}>
+                  <div className={notValidClasses.modelYearCls}>
                       <input
-                      ref="assetLocation"
+                      ref="modelYear"
                       autoComplete="off"
-                      type="text"
-                      placeholder=""
+                      type="number"
+                      placeholder="YYYY"
                       className="form-control"
                       required
-                      defaultValue={this.state.id}
+                      defaultValue={this.state.modelYear}
                       onBlur={this.validationCheck}/>
-                      <div className={notValidClasses.idValGrpCls}>{this.state.idValMsg}</div>
+                      <div className={notValidClasses.modelYearValGrpCls}>{this.state.modelYearValMsg}</div>
                   </div>
                 </div>
                 <div className="form-group col-md-12 content form-block-holder">
                   <label className="control-label col-md-4">
-                    Disposal Date
+                    Speed Chart
                   </label>
-                  <div className={notValidClasses.idCls}>
+                  <div className={notValidClasses.dateCls}>
                       <input
-                      ref="disposalDate"
-                      autoComplete="off"
-                      type="date"
-                      placeholder="MM-DD-YYYY"
-                      className="form-control"
-                      required
-                      defaultValue={this.state.id}
-                      onBlur={this.validationCheck} />
-                      <div className={notValidClasses.idValGrpCls}>{this.state.idValMsg}</div>
-                  </div>
-                </div>
-                <div className="form-group col-md-12 content form-block-holder">
-                  <label className="control-label col-md-4">
-                    Method Of Disposal
-                  </label>
-                  <div className={notValidClasses.idCls}>
-                      <input
-                      ref="methodOfDisposal"
-                      autoComplete="off"
-                      type="text"
-                      placeholder=""
-                      className="form-control"
-                      required
-                      defaultValue={this.state.id}
-                      onBlur={this.validationCheck} />
-                      <div className={notValidClasses.idValGrpCls}>{this.state.idValMsg}</div>
-                  </div>
-                </div>
-                <div className="form-group col-md-12 content form-block-holder">
-                  <label className="control-label col-md-4">
-                    User Type
-                  </label>
-                  <div className={notValidClasses.idCls}>
-                      <input
-                      ref="userType"
-                      autoComplete="off"
-                      type="text"
-                      placeholder=""
-                      className="form-control"
-                      required
-                      defaultValue={this.state.id}
-                      onBlur={this.validationCheck} />
-                      <div className={notValidClasses.idValGrpCls}>{this.state.idValMsg}</div>
-                  </div>
-                </div>
-                <div className="form-group col-md-12 content form-block-holder">
-                  <label className="control-label col-md-4">
-                    Unit Affiliation
-                  </label>
-                  <div className={notValidClasses.idCls}>
-                      <input
-                      ref="unitAffiliation"
-                      autoComplete="off"
-                      type="text"
-                      placeholder=""
-                      className="form-control"
-                      required
-                      defaultValue={this.state.id}
-                      onBlur={this.validationCheck} />
-                      <div className={notValidClasses.idValGrpCls}>{this.state.idValMsg}</div>
-                  </div>
-                </div>
-                <div className="form-group col-md-12 content form-block-holder">
-                  <label className="control-label col-md-4">
-                    Cost
-                  </label>
-                  <div className={notValidClasses.costCls}>
-                      <input
-                      ref="cost"
+                      ref="speedChart"
                       autoComplete="off"
                       type="number"
                       placeholder=""
                       className="form-control"
                       required
-                      defaultValue={this.state.cost}
+                      defaultValue={this.state.date}
                       onBlur={this.validationCheck} />
-                      <div className={notValidClasses.costValGrpCls}>{this.state.costValMsg}</div>
+                      <div className={notValidClasses.dateValGrpCls}>{this.state.dateValMsg}</div>
+                  </div>
+                </div>
+                <div className="form-group col-md-12 content form-block-holder">
+                  <label className="control-label col-md-4">
+                    Vendor
+                  </label>
+                  <div className={notValidClasses.dateCls}>
+                      <input
+                      ref="vendor"
+                      autoComplete="off"
+                      type="text"
+                      placeholder=""
+                      className="form-control"
+                      required
+                      defaultValue={this.state.date}
+                      onBlur={this.validationCheck} />
+                      <div className={notValidClasses.dateValGrpCls}>{this.state.dateValMsg}</div>
+                  </div>
+                </div>
+                <div className="form-group col-md-12 content form-block-holder">
+                  <label className="control-label col-md-4">
+                    JV Number
+                  </label>
+                  <div className={notValidClasses.dateCls}>
+                      <input
+                      ref="jvNumber"
+                      autoComplete="off"
+                      type="number"
+                      placeholder=""
+                      className="form-control"
+                      required
+                      defaultValue={this.state.date}
+                      onBlur={this.validationCheck} />
+                      <div className={notValidClasses.dateValGrpCls}>{this.state.dateValMsg}</div>
+                  </div>
+                </div>
+                <div className="form-group col-md-12 content form-block-holder">
+                  <label className="control-label col-md-4">
+                    Date Purchased
+                  </label>
+                  <div className={notValidClasses.dateCls}>
+                      <input
+                      ref="datePurchased"
+                      autoComplete="off"
+                      type="date"
+                      placeholder="MM-DD-YY"
+                      className="form-control"
+                      required
+                      defaultValue={this.state.date}
+                      onBlur={this.validationCheck} />
+                      <div className={notValidClasses.dateValGrpCls}>{this.state.dateValMsg}</div>
+                  </div>
+                </div>
+                <div className="form-group col-md-12 content form-block-holder">
+                  <label className="control-label col-md-4">
+                    Current User
+                  </label>
+                  <div className={notValidClasses.dateCls}>
+                      <input
+                      ref="currentUser"
+                      autoComplete="off"
+                      type="text"
+                      placeholder=""
+                      className="form-control"
+                      required
+                      defaultValue={this.state.date}
+                      onBlur={this.validationCheck} />
+                      <div className={notValidClasses.dateValGrpCls}>{this.state.dateValMsg}</div>
                   </div>
                 </div>
                 <div className="form-group col-md-12 content form-block-holder">
                   <label className="control-label col-md-4">
                     Previous User
                   </label>
-                  <div className={notValidClasses.idCls}>
+                  <div className={notValidClasses.dateCls}>
                       <input
                       ref="previousUser"
                       autoComplete="off"
@@ -224,9 +232,9 @@ export default class FourthPage extends Component {
                       placeholder=""
                       className="form-control"
                       required
-                      defaultValue={this.state.id}
+                      defaultValue={this.state.date}
                       onBlur={this.validationCheck} />
-                      <div className={notValidClasses.idValGrpCls}>{this.state.idValMsg}</div>
+                      <div className={notValidClasses.dateValGrpCls}>{this.state.dateValMsg}</div>
                   </div>
                 </div>
               </form>
