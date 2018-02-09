@@ -7,14 +7,13 @@ export default class FourthPage extends Component {
         super(props);
 
         this.state = {
-            assetLocation: props.getStore().assetLocation,
-            disposalDate: props.getStore().disposalDate,
-            methodOfDisposal: props.getStore().methodOfDisposal,
-            userType: props.getStore().userType,
-            unitAffiliation: props.getStore().unitAffiliation,
-            cost: props.getStore().cost,
+            assetLocation: props.getField().assetLocation,
+            disposalDate: props.getField().disposalDate,
+            methodOfDisposal: props.getField().methodOfDisposal,
+            userType: props.getField().userType,
+            unitAffiliation: props.getField().unitAffiliation,
+            cost: props.getField().cost,
         };
-    // this flag enables onBlur validation as user fills forms
         this._validateOnDemand = true; 
     
         this.validationCheck = this.validationCheck.bind(this);
@@ -32,15 +31,17 @@ export default class FourthPage extends Component {
   
         // if full validation passes then save to store and pass as valid
         if (Object.keys(validateNewInput).every((k) => { return validateNewInput[k] === true })) {
-            if (this.props.getStore().cost != userInput.cost) { // only update store of something changed
-                this.props.updateStore({
+            if (this.props.getField().cost != userInput.cost) { // only update store of something changed
+                this.props.updateField({
                     ...userInput,
                     savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
                 });  // Update store here (this is just an example, in reality you will do it via redux or flux)
             }
+          isDataValid = true;
+          } else {
             this.setState(Object.assign(userInput, validateNewInput, this._validationErrors(validateNewInput)));
-            return isDataValid;
         }
+        return isDataValid;
     }
   
     validationCheck() {
@@ -210,23 +211,6 @@ export default class FourthPage extends Component {
                       defaultValue={this.state.cost}
                       onBlur={this.validationCheck} />
                       <div className={notValidClasses.costValGrpCls}>{this.state.costValMsg}</div>
-                  </div>
-                </div>
-                <div className="form-group col-md-12 content form-block-holder">
-                  <label className="control-label col-md-4">
-                    Previous User
-                  </label>
-                  <div className={notValidClasses.idCls}>
-                      <input
-                      ref="previousUser"
-                      autoComplete="off"
-                      type="text"
-                      placeholder=""
-                      className="form-control"
-                      required
-                      defaultValue={this.state.id}
-                      onBlur={this.validationCheck} />
-                      <div className={notValidClasses.idValGrpCls}>{this.state.idValMsg}</div>
                   </div>
                 </div>
               </form>

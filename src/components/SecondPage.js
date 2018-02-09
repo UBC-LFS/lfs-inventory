@@ -7,14 +7,13 @@ export default class SecondPage extends Component {
         super(props);
 
         this.state = {
-          assetName: props.getStore().assetName,
-          assetModelNumber: props.getStore().assetModelNumber,
-          assetSpecs: props.getStore().assetSpecs,
-          assetSerialNumber: props.getStore().assetSerialNumber,
-          assetTag: props.getStore().assetTag,
-          assetOwner: props.getStore().assetOwner
+          assetName: props.getField().assetName,
+          assetModelNumber: props.getField().assetModelNumber,
+          assetSpecs: props.getField().assetSpecs,
+          assetSerialNumber: props.getField().assetSerialNumber,
+          assetTag: props.getField().assetTag,
+          assetOwner: props.getField().assetOwner
         };
-    // this flag enables onBlur validation as user fills forms
         this._validateOnDemand = true; 
     
         this.validationCheck = this.validationCheck.bind(this);
@@ -32,11 +31,10 @@ export default class SecondPage extends Component {
 
       // if full validation passes then save to store and pass as valid
       if (Object.keys(validateNewInput).every((k) => { return validateNewInput[k] === true })) {
-          if (this.props.getStore().assetName != userInput.assetName || this.props.getStore().assetModelNumber != userInput.assetModelNumber) { // only update store of something changed
-              this.props.updateStore({
-                  ...userInput,
-                  savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
-              });  // Update store here (this is just an example, in reality you will do it via redux or flux)
+          if (this.props.getField().assetName != userInput.assetName || this.props.getField().assetModelNumber != userInput.assetModelNumber) { // only update store of something changed
+              this.props.updateField({
+                ...userInput,
+              });
           }
 
           isDataValid = true;

@@ -7,12 +7,12 @@ export default class FirstPage extends Component {
         super(props);
 
         this.state = {
-            id: props.getStore().id,
-            date: props.getStore().date,
-            dateModified: props.getStore().dateModified,
-            user: props.getStore().user
+            id: props.getField().id,
+            date: props.getField().date,
+            dateModified: props.getField().dateModified,
+            user: props.getField().user
         };
-    // this flag enables onBlur validation as user fills forms
+        // this flag enables onBlur validation as user fills forms
         this._validateOnDemand = true; 
     
         this.validationCheck = this.validationCheck.bind(this);
@@ -31,11 +31,10 @@ isValidated() {
 
     // if full validation passes then save to store and pass as valid
     if (Object.keys(validateNewInput).every((k) => { return validateNewInput[k] === true })) {
-        if (this.props.getStore().id != userInput.id || this.props.getStore().date != userInput.date) { // only update store of something changed
-            this.props.updateStore({
+        if (this.props.getField().id != userInput.id || this.props.getField().date != userInput.date) { // only update store of something changed
+            this.props.updateField({
                 ...userInput,
-                savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
-            });  // Update store here (this is just an example, in reality you will do it via redux or flux)
+            }); 
         }
 
         isDataValid = true;

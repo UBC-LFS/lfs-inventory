@@ -7,15 +7,14 @@ export default class ThirdPage extends Component {
         super(props);
 
         this.state = {
-            modelYear: props.getStore().modelYear,
-            speedChart: props.getStore().speedChart,
-            vendor: props.getStore().vendor,
-            jvNumber: props.getStore().jvNumber,
-            datePurchased: props.getStore().datePurchased,
-            currentUser: props.getStore().currentUser,
-            previousUser: props.getStore().previousUser
+            modelYear: props.getField().modelYear,
+            speedChart: props.getField().speedChart,
+            vendor: props.getField().vendor,
+            jvNumber: props.getField().jvNumber,
+            datePurchased: props.getField().datePurchased,
+            currentUser: props.getField().currentUser,
+            previousUser: props.getField().previousUser
         };
-    // this flag enables onBlur validation as user fills forms
         this._validateOnDemand = true; 
     
         this.validationCheck = this.validationCheck.bind(this);
@@ -33,11 +32,10 @@ export default class ThirdPage extends Component {
   
         // if full validation passes then save to store and pass as valid
         if (Object.keys(validateNewInput).every((k) => { return validateNewInput[k] === true })) {
-            if (this.props.getStore().modelYear != userInput.modelYear) { // only update store of something changed
-                this.props.updateStore({
-                    ...userInput,
-                    savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
-                });  // Update store here (this is just an example, in reality you will do it via redux or flux)
+            if (this.props.getField().modelYear != userInput.modelYear) { // only update store of something changed
+                this.props.updateField({   
+                  ...userInput,
+                });
             }
             isDataValid = true;
         }
@@ -63,7 +61,7 @@ export default class ThirdPage extends Component {
       return  {
           //required: regex w3c uses in html5
           //assetName validation: 
-          modelYearVal: /[0-9]{4}$/.test(data.modelYear)         
+          modelYearVal:/(?:(?:19|20)[0-9]{2})/.test(data.modelYear)         
       }
     }
   

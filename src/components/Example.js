@@ -6,15 +6,19 @@ import FirstPage from './FirstPage'
 import SecondPage from './SecondPage'
 import ThirdPage from './ThirdPage'
 import FourthPage from './FourthPage'
+import LastPage from './LastPage'
+
 
 var StepZilla = require('react-stepzilla').default
 
 export default class Example extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    
+    };
 
-    this.store = {
+    this.field = {
       id: '', 
       date: '', 
       dateModified: '', 
@@ -49,13 +53,13 @@ export default class Example extends Component {
 
   componentWillUnmount() {}
 
-  getStore() {
-    return this.store;
+  getField() {
+    return this.field;
   }
 
-  updateStore(update) {
-    this.store = {
-      ...this.store,
+  updateField(update) {
+    this.field = {
+      ...this.field,
       ...update,
     }
   }
@@ -63,10 +67,11 @@ export default class Example extends Component {
   render() {
     const steps =
     [
-      {name: 'FirstPage', component: <FirstPage getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'SecondPage', component: <SecondPage getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'ThirdPage', component: <ThirdPage getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'FourthPage', component: <FourthPage getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'Step 1', component: <FirstPage getField={() => (this.getField())} updateField={(u) => {this.updateField(u)}} />},
+      {name: 'Step 2', component: <SecondPage getField={() => (this.getField())} updateField={(u) => {this.updateField(u)}} />},
+      {name: 'Step 3', component: <ThirdPage getField={() => (this.getField())} updateField={(u) => {this.updateField(u)}} />},
+      {name: 'Step 4', component: <FourthPage getField={() => (this.getField())} updateField={(u) => {this.updateField(u)}} />},
+      {name: 'Thank You', component: <LastPage />},
        ]
 
     return (
@@ -75,8 +80,8 @@ export default class Example extends Component {
           <StepZilla
             steps={steps}
             preventEnterSubmission={true}
+            prevBtnOnLastStep={false}
             nextTextOnFinalActionStep={"Submit"}
-            hocValidationAppliedTo={[3]}
             startAtStep={window.sessionStorage.getItem('step') ? parseFloat(window.sessionStorage.getItem('step')) : 0}
             onStepChange={(step) => window.sessionStorage.setItem('step', step)}
            />
