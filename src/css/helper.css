@@ -1,0 +1,134 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  line-height: 1.5;
+  color: #24292e;
+  background-color: #fff;
+}
+
+/*
+body > * { text-align: left; }
+*/
+
+.app {
+  margin: 2rem;
+}
+
+a {
+  color: #08c;
+}
+
+code {
+  background: #eee;
+  padding: .1rem;
+  font-family: 'Menlo';
+  font-size: 13px;
+  color: #ff00aa;
+}
+
+form {
+  margin:10px auto;
+  max-width: 400px;
+  padding: 20px 12px 10px 20px;
+  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: left;
+}
+
+.form-header {
+  margin-bottom: 20px;
+}
+
+label{
+  margin:0 0 3px 0;
+  padding:0px;
+  display:block;
+  font-weight: bold;
+  margin-bottom: .05rem;
+  margin-top: .5rem;
+}
+
+input {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border:1px solid #BEBEBE;
+  padding: 7px;
+  margin:0px;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;  
+  width: 49%;
+}
+
+.form .field-textarea{
+  height: 100px;
+}
+
+input:focus {
+  -moz-box-shadow: 0 0 8px #88D5E9;
+  -webkit-box-shadow: 0 0 8px #88D5E9;
+  box-shadow: 0 0 8px #88D5E9;
+  border: 1px solid #88D5E9;
+}
+
+input:hover {
+  background: #F0F8FF;
+  box-shadow:none;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+}
+
+input.error {
+  border-color: red;
+}
+
+.errors {
+  display:inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  color: red;
+}
+
+.input-feedback {
+  color: red;
+  margin-top: .25rem;
+}
+
+button {
+  display: block;
+  max-width: 100px;
+  padding: 5px 10px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: #4B99AD;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  margin-top: 1rem;
+  -webkit-appearance: none;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed !important;
+}
+
+button + button {
+  margin-left: .5rem;
+}
+
+button.outline {
+  background-color: #eee;
+  border: 1px solid #aaa;
+  color: #555;
+}
+
+.required{
+  color:red;
+}
