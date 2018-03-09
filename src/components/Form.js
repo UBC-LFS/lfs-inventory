@@ -4,7 +4,7 @@ import { withFormik } from 'formik';
 
 import '../css/helper.css';
 
-// Our inner form component which receives our form's state and updater methods as props
+// Inner form component which receives the form's state and updater methods as props
 const InnerForm = ({
   values,
   errors,
@@ -29,6 +29,18 @@ const InnerForm = ({
     />
     {touched.id && errors.id && <div type="text" className ="errors">{errors.id}</div>}
     
+    <label htmlFor="user" style={{ display: 'block' }}>
+      User
+    </label>
+    <input
+      type="text"
+      name="user"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.user}
+    />
+    {touched.user && errors.user && <div className ="errors">{errors.user}</div>}
+
     <label htmlFor="date" style={{ display: 'block' }}>
       Date
     </label>
@@ -52,18 +64,6 @@ const InnerForm = ({
       value={values.dateModified}
     />
     {touched.dateModified && errors.dateModified && <div className ="errors">{errors.dateModified}</div>}
-
-    <label htmlFor="user" style={{ display: 'block' }}>
-      User
-    </label>
-    <input
-      type="text"
-      name="user"
-      onChange={handleChange}
-      onBlur={handleBlur}
-      value={values.user}
-    />
-    {touched.user && errors.user && <div className ="errors">{errors.user}</div>}
 
     <label htmlFor="assetName" style={{ display: 'block' }}>
       Asset Name
@@ -137,27 +137,187 @@ const InnerForm = ({
     />
     {touched.assetOwner && errors.assetOwner && <div className ="errors">{errors.assetOwner}</div>}
     
+    <label htmlFor="modelYear" style={{ display: 'block' }}>
+      Model Year
+    </label>
+    <input
+      type="text"
+      name="modelYear"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.modelYear}
+    />
+    {touched.modelYear && errors.modelYear && <div className ="errors">{errors.modelYear}</div>}
+    
+    <label htmlFor="speedChart" style={{ display: 'block' }}>
+      Speed Chart
+    </label>
+    <input
+      type="text"
+      name="speedChart"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.speedChart}
+    />
+    {touched.speedChart && errors.speedChart && <div className ="errors">{errors.speedChart}</div>}
+    
+    <label htmlFor="vendor" style={{ display: 'block' }}>
+      Vendor
+    </label>
+    <input
+      type="text"
+      name="vendor"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.vendor}
+    />
+    {touched.vendor && errors.vendor && <div className ="errors">{errors.vendor}</div>}
+    
+    <label htmlFor="jvNumber" style={{ display: 'block' }}>
+      JV Number 
+    </label>
+    <input
+      type="text"
+      name="jvNumber"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.jvNumber}
+    />
+    {touched.jvNumber && errors.jvNumber && <div className ="errors">{errors.jvNumber}</div>}
+    
+    <label htmlFor="datePurchased" style={{ display: 'block' }}>
+      Date Purchased
+    </label>
+    <input
+      type="text"
+      name="datePurchased"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.datePurchased}
+    />
+    {touched.datePurchased && errors.datePurchased && <div className ="errors">{errors.datePurchased}</div>}
+    
+    <label htmlFor="currentUser" style={{ display: 'block' }}>
+      Current User
+    </label>
+    <input
+      type="text"
+      name="currentUser"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.currentUser}
+    />
+    {touched.currentUser && errors.currentUser && <div className ="errors">{errors.currentUser}</div>}
+    
+    <label htmlFor="previousUser" style={{ display: 'block' }}>
+      Previous User
+    </label>
+    <input
+      type="text"
+      name="previousUser"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.previousUser}
+    />
+    {touched.previousUser && errors.previousUser && <div className ="errors">{errors.previousUser}</div>}
+    
+    <label htmlFor="assetLocation" style={{ display: 'block' }}>
+      Asset Location
+    </label>
+    <input
+      type="text"
+      name="assetLocation"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.assetLocation}
+    />
+    {touched.assetLocation && errors.assetLocation && <div className ="errors">{errors.assetLocation}</div>}
+    
+    <label htmlFor="disposalDate" style={{ display: 'block' }}>
+      Disposal Date
+    </label>
+    <input
+      type="date"
+      name="disposalDate"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.disposalDate}
+    />
+    {touched.disposalDate && errors.disposalDate && <div className ="errors">{errors.disposalDate}</div>}
+    
+    <label htmlFor="methodOfDisposal" style={{ display: 'block' }}>
+      Method Of Disposal
+    </label>
+    <input
+      type="text"
+      name="methodOfDisposal"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.methodOfDisposal}
+    />
+    {touched.methodOfDisposal && errors.methodOfDisposal && <div className ="errors">{errors.methodOfDisposal}</div>}
+    
+    <label htmlFor="userType" style={{ display: 'block' }}>
+      User Type
+    </label>
+    <input
+      type="text"
+      name="userType"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.userType}
+    />
+    {touched.userType && errors.userType && <div className ="errors">{errors.userType}</div>}
+    
+    <label htmlFor="unitAffiliation" style={{ display: 'block' }}>
+      Unit Affiliation
+    </label>
+    <input
+      type="text"
+      name="unitAffiliation"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.unitAffiliation}
+    />
+    {touched.unitAffiliation && errors.unitAffiliation && <div className ="errors">{errors.unitAffiliation}</div>}
+    
+    <label htmlFor="cost" style={{ display: 'block' }}>
+      Cost
+    </label>
+    <input
+      type="text"
+      name="cost"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.cost}
+    />
+    {touched.cost && errors.cost && <div className ="errors">{errors.cost}</div>}
+    
     <button type="submit" disabled={isSubmitting}>
       Submit
     </button>
   </form>
 );
 
-// Wrap our form with the using withFormik HoC
+// Wrap form using withFormik HoC
 const InventoryForm = withFormik({
   // Transform outer props into form values
-  mapPropsToValues: props => ({ id: '', date: '' }),
-  // Add a custom validation function (this can be async too!)
+  mapPropsToValues: props => ({ id: '', user: '', date: '', dateModified: '', 
+  assetName: '', assetModelNumber: '', assetSpecs: '', assetSerialNumber: '', assetTag: '', 
+  assetOwner: '', modelYear: '', speedChart: '', vendor: '', jvNumber: '', datePurchased: '',
+  currentUser: '', previousUser: '',  assetLocation: '', disposalDate: '',  methodOfDisposal: '',
+  userType: '', unitAffiliation: '', cost: ''}),
+  // Validation checks
   validate: (values, props) => {
     const errors = {};
     if (!values.id) {
       errors.id = 'Required';
     } 
-    // else if (
-    //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    // ) {
-    //   errors.email = 'Invalid email address';
-    // }
+    if (
+      !/(?:(?:19|20)[0-9]{2})/.test(values.modelYear)
+    ) {
+      errors.modelYear = 'Invalid year';
+    }
     return errors;
   },
   // Submission handler
@@ -183,7 +343,6 @@ const InventoryForm = withFormik({
   },
 })(InnerForm);
 
-// Use <MyForm /> anywhere
 const Basic = () => (
   <div>
     <InventoryForm />
