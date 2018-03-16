@@ -29,14 +29,51 @@ code {
 
 form {
   margin:10px auto;
-  max-width: 400px;
-  padding: 20px 12px 10px 20px;
+  padding: 10px 10px 10px 20px;
   font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   text-align: left;
 }
 
+.form-body {
+  padding-left: 150px;
+}
+
+.cbp-mc-column {
+	width: 20%;
+	padding: 10px 15px;
+	float: left;
+}
+
+@media screen and (max-width: 70rem) {
+	.cbp-mc-column {
+		width: 50%;
+	}
+	.cbp-mc-column:nth-child(3) {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 48rem) {
+	.cbp-mc-column {
+		width: 20%;
+		padding: 15px;
+	}
+}
+
+.cbp-mc-submit-wrap {
+	text-align: center;
+  padding-top: 5px;
+  padding-left: 5px;
+	clear: both;
+}
+
+.cbp-mc-submit {
+  margin-left: 10px;
+}
+
 .form-header {
   margin-bottom: 20px;
+  padding-left: 5px;
 }
 
 label{
@@ -52,14 +89,11 @@ input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   border:1px solid #BEBEBE;
-  padding: 7px;
-  margin:0px;
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
   -o-transition: all 0.30s ease-in-out;
   outline: none;  
-  width: 49%;
 }
 
 .form .field-textarea{
