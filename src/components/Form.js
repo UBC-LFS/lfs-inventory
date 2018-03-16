@@ -24,6 +24,7 @@ const InnerForm = ({
       <input
         type="text"
         name="id"
+        placeholder= "Sample ID"
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.id}
@@ -145,6 +146,7 @@ const InnerForm = ({
       <input
         type="text"
         name="modelYear"
+        placeholder= "e.g. 1995"
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.modelYear}
