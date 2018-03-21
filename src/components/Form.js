@@ -14,12 +14,12 @@ const InnerForm = ({
   handleSubmit,
   isSubmitting,
 }) => (
-  <form class="form-body" onSubmit={handleSubmit}>
-    <h1 class="form-header">LFS Inventory Form</h1>
-    <div class="cbp-mc-column">
+  <form className="form-body" onSubmit={handleSubmit}>
+    <h1 className="form-header">LFS Inventory Form</h1>
+    <div className="cbp-mc-column">
       <label htmlFor="id" style={{ display: 'block' }}>
         ID
-        <span class="required">*</span>
+        <span className="required">*</span>
       </label>
       <input
         type="text"
@@ -115,7 +115,7 @@ const InnerForm = ({
       />
       {touched.assetSerialNumber && errors.assetSerialNumber && <div className ="errors">{errors.assetSerialNumber}</div>}
     </div>
-    <div class="cbp-mc-column">
+    <div className="cbp-mc-column">
       <label htmlFor="assetTag" style={{ display: 'block' }}>
         Asset Tag
       </label>
@@ -213,7 +213,7 @@ const InnerForm = ({
       />
       {touched.currentUser && errors.currentUser && <div className ="errors">{errors.currentUser}</div>}
     </div>
-    <div class="cbp-mc-column">
+    <div className="cbp-mc-column">
       <label htmlFor="previousUser" style={{ display: 'block' }}>
         Previous User
       </label>
@@ -299,8 +299,8 @@ const InnerForm = ({
       {touched.cost && errors.cost && <div className ="errors">{errors.cost}</div>}
     </div>
     
-    <div class="cbp-mc-submit-wrap">
-      <button  class="cbp-mc-submit" type="submit" disabled={isSubmitting}>
+    <div className="cbp-mc-submit-wrap">
+      <button  className="cbp-mc-submit" type="submit" disabled={isSubmitting}>
         Submit
       </button>
     </div>
@@ -336,10 +336,7 @@ const InventoryForm = withFormik({
       setSubmitting,
       setErrors /* setValues, setStatus, and other goodies */,
     }
-  ) => {
-    errors => {
-      setSubmitting(false);
-    } 
+  ) => { 
     let FD = new FormData()
     for (let name in values) {
       FD.append(name, values[name])
@@ -347,7 +344,7 @@ const InventoryForm = withFormik({
     const xhr = new XMLHttpRequest()
     xhr.open('POST', 'api/form') 
     xhr.send(FD)
-    setSubmitting(false);
+    setSubmitting(false)
   },
 })(InnerForm);
 
