@@ -16,6 +16,7 @@ const Error = ({ name }) => (
   />
 );
 
+
 class Wizard extends React.Component {
   static Page = ({ children }) => children;
 
@@ -23,10 +24,14 @@ class Wizard extends React.Component {
     super(props);
     this.state = {
       page: 0,
-      values: props.initialValues,
+      values: { id: '', user: '', date: '', dateModified: '', 
+      assetName: '', assetModelNumber: '', assetSpecs: '', assetSerialNumber: '', assetTag: '', 
+      assetOwner: '', modelYear: '', speedChart: '', vendor: '', jvNumber: '', datePurchased: '',
+      currentUser: '', previousUser: '',  assetLocation: '', disposalDate: '',  methodOfDisposal: '',
+      userType: '', unitAffiliation: '', cost: ''},
     };
   }
-
+  
   next = values =>
     this.setState(state => ({
       page: Math.min(state.page + 1, this.props.children.length - 1),
