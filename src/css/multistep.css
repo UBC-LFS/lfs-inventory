@@ -1,7 +1,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
   color: #24292e;
   background-color: #fff;
@@ -10,6 +10,10 @@ body {
 /*
 body > * { text-align: left; }
 */
+
+.Multi {
+  text-align: center;
+}
 
 .app {
   margin: 2rem;
@@ -28,9 +32,10 @@ code {
 }
 
 form {
+  max-width: 400px;
   margin:10px auto;
   padding: 10px 10px 10px 20px;
-  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font: 14px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   text-align: left;
 }
 
@@ -114,7 +119,9 @@ input {
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
   -o-transition: all 0.30s ease-in-out;
-  outline: none;  
+  outline: none; 
+  margin-bottom: 0.5rem;
+  margin-right: 2px; 
 }
 
 .form .field-textarea{
@@ -135,8 +142,9 @@ input:hover {
   -webkit-box-shadow:none;
 }
 
+/* BUTTONS*/
+
 button {
-  display: block;
   max-width: 100px;
   padding: 5px 10px;
   border-style: none;
@@ -167,6 +175,14 @@ button.outline {
   color: #555;
 }
 
+.previous-button {
+  display: inline-block;
+}
+
+.next-button .submit-button {
+  display: inline-block;
+}
+
 /* ERRORS */
 input.error {
   border-color: red;
@@ -180,10 +196,13 @@ input.error {
   color: red;
 }
 
-
 .input-feedback {
   display:inline-block;
   color: red;
   margin-top: .25rem;
+}
+
+.required {
+  color: red;
 }
 
