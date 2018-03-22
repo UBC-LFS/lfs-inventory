@@ -7,8 +7,6 @@ import React, { Component } from 'react'
 import Multi from './components/MultiStep'
 import './App.css'
 
-require('./css/main.css');
-
 class App extends Component {
   render () {
     return (
