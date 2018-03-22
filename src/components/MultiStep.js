@@ -25,9 +25,6 @@ class Wizard extends React.Component {
       page: 0,
       values: props.initialValues,
     };
-    this.fields = {
-
-    };
   }
 
   next = values =>
@@ -53,6 +50,13 @@ class Wizard extends React.Component {
     const { page } = this.state;
     const isLastPage = page === React.Children.count(children) - 1;
     if (isLastPage) {
+      let FD = new FormData()
+      for (let name in values) {
+        FD.append(name, values[name])
+      }
+      const xhr = new XMLHttpRequest()
+      xhr.open('POST', 'api/form') 
+      xhr.send(FD)
       return onSubmit(values);
     } else {
       this.next(values);
@@ -99,16 +103,9 @@ const Multi = () => (
   <div className="Multi">
     <h1>LFS Inventory Form</h1>
     <Wizard
-      initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
-        favoriteColor: '',
-      }}
       onSubmit={(values, actions) => {
         sleep(300).then(() => {
           window.alert(JSON.stringify(values, null, 2));
-          actions.setSubmitting(false);
         });
       }}
     >
@@ -232,7 +229,15 @@ const Multi = () => (
         </div>
       </Wizard.Page>
       
-      <Wizard.Page>
+      <Wizard.Page
+        validate={values => {
+          const errors = {};
+          if (values.modelYear && !/(?:(?:19|20)[0-9]{2})/.test(values.modelYear)) {
+            errors.modelYear = 'Please enter a valid year';
+          }
+          return errors;
+        }} 
+      >
         <div>
           <label htmlFor="modelYear" style={{ display: 'block' }}>
             Model Year
