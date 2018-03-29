@@ -5,19 +5,20 @@ import React, { Component } from 'react'
 // import Example from './components/Example';
 // import Basic from './components/Form'
 import Multi from './components/MultiStep'
-import './App.css'
+import ProgressBar from './ProgressBar'
+import './css/App.css'
 
 class App extends Component {
   render () {
     return (
       <div className='App navbar expand'>
-      <div class="headerBar">
-        <h1>LFS Inventory Form</h1>
-      </div>
+        <div className="headerBar">
+          <h1>LFS Inventory Form</h1>
+        </div>
+        <ProgressBar />
         <Multi />
       </div>
     )
   }
 }
-
 export default App
