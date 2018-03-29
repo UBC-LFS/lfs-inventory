@@ -106,14 +106,13 @@ class Wizard extends React.Component {
 
 const Multi = () => (
   <div className="Multi">
-    <h1>LFS Inventory Form</h1>
     <Wizard
       onSubmit={(values, actions) => {
         sleep(300).then(() => {
           window.alert(JSON.stringify(values, null, 2));
         });
       }}
-    >
+    > 
       <Wizard.Page>
         <div>
           <label htmlFor="id" style={{ display: 'block' }}>

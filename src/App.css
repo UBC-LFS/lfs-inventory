@@ -8,3 +8,19 @@
   padding: 15px 15px 15px 15px;
   background: #FFFFFF;
 }
+
+.headerBar  {
+  padding: 10px 0 40px 0;
+  width: 100%; 
+  height: 38px; 
+  background-color: #0b98de;
+}
+
+h1 {
+  list-style: none;
+  text-align: center;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+  sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 24px;
+}

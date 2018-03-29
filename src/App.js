@@ -11,6 +11,9 @@ class App extends Component {
   render () {
     return (
       <div className='App navbar expand'>
+      <div class="headerBar">
+        <h1>LFS Inventory Form</h1>
+      </div>
         <Multi />
       </div>
     )
