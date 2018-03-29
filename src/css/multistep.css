@@ -34,10 +34,12 @@ code {
 
 form {
   max-width: 250px;
-  margin:10px auto;
-  padding: 30px 10px 10px 20px;
+  margin:20px auto;
+  padding: 30px 10px 30px 20px;
   font: 14px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   text-align: left;
+  background-color: #e6f3ff;
+  box-shadow: 5px 10px #D3D3D3;
 }
 
 .form-body {
@@ -110,6 +112,8 @@ label{
   display:block;
   font-weight: bold;
   margin-bottom: .05rem;
+  margin-left: 40px;
+  letter-spacing: 1px;
 }
 
 input {
@@ -124,6 +128,8 @@ input {
   outline: none; 
   margin-bottom: 0.5rem;
   margin-right: 2px; 
+  margin-left: 40px;
+  width: 150px;
 }
 
 .form .field-textarea{
@@ -160,6 +166,7 @@ button {
   outline: none;
   margin-top: 1rem;
   -webkit-appearance: none;
+  margin-left: 40px;
 }
 
 button:disabled {
