@@ -6,7 +6,7 @@ import './css/progressbar.css'
 
 export default class ProgressBar extends Component {
   state = {
-      step: Wizard
+      step: 0
   }
 
   render() {
