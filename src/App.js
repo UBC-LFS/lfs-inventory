@@ -5,10 +5,24 @@ import React, { Component } from 'react'
 // import Example from './components/Example';
 // import Basic from './components/Form'
 import Multi from './components/MultiStep'
-import ProgressBar from './ProgressBar'
+import ProgressBar from './components/ProgressBar'
 import './css/App.css'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      globalStep:0,
+    }
+  };
+
+  onHandlePrev = (event) => {
+    console.log("handling prev")
+  };
+
+  onHandleNext = (event) => {
+  };
+
   render () {
     return (
       <div className='App navbar expand'>
@@ -16,7 +30,7 @@ class App extends Component {
           <h1>LFS Inventory Form</h1>
         </div>
         <ProgressBar />
-        <Multi />
+        <Multi onHandlePrev={this.onHandlePrev.bind(this)} onHandleNext={this.onHandleNext.bind(this)}/>
       </div>
     )
   }

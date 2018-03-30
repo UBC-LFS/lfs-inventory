@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
-
+import ProgressBar from './ProgressBar'
 import '../css/multistep.css';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -16,12 +16,11 @@ const Error = ({ name }) => (
   />
 );
 
-
 class Wizard extends React.Component {
   static Page = ({ children }) => children;
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       page: 0,
       values: { id: '', user: '', date: '', dateModified: '', 
@@ -29,9 +28,10 @@ class Wizard extends React.Component {
       assetOwner: '', modelYear: '', speedChart: '', vendor: '', jvNumber: '', datePurchased: '',
       currentUser: '', previousUser: '',  assetLocation: '', disposalDate: '',  methodOfDisposal: '',
       userType: '', unitAffiliation: '', cost: ''},
-    };
+    }
   }
-  
+
+
   next = values =>
     this.setState(state => ({
       page: Math.min(state.page + 1, this.props.children.length - 1),
@@ -90,7 +90,7 @@ class Wizard extends React.Component {
                 </button>
               )}
 
-              {!isLastPage && <button className ="next-button" type="submit">Next »</button>}
+              {!isLastPage && <button className ="next-button" type="submit" onClick={this.props.onHandl}>Next »</button>}
               {isLastPage && (
                 <button className ="submit action-button" type="submit" disabled={isSubmitting}>
                   Submit
@@ -104,7 +104,7 @@ class Wizard extends React.Component {
   }
 }
 
-const Multi = () => (
+const Multi = (props) => (
   <div className="Multi">
     <Wizard
       onSubmit={(values, actions) => {
@@ -112,6 +112,8 @@ const Multi = () => (
           window.alert(JSON.stringify(values, null, 2));
         });
       }}
+      onHandlePrev={props.onHandlePrev}
+      onHandleNext={props.onHandleNext}
     > 
       <Wizard.Page>
         <div>
