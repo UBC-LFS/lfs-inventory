@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-//import './css/Update.css'
+import ReactDOM from 'react-dom';
+import SearchBar from './components/SearchBar'
+import SearchResults from './components/Search'
+//import './css/Search.css'
 
-class UpdateFields extends Component {
+class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,4 +37,4 @@ class UpdateFields extends Component {
   }
 }
 
-export default UpdateFields;
+export default SearchForm;

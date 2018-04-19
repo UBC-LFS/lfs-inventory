@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 //import './css/Update.css'
 
-class UpdateFields extends Component {
+class UpdateForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,4 +34,4 @@ class UpdateFields extends Component {
   }
 }
 
-export default UpdateFields;
+export default UpdateForm;
