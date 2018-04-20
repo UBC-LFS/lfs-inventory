@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
-import ProgressBar from './ProgressBar'
+import ProgressBar from '../progressbar/ProgressBar'
 import '../css/multistep.css';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -60,7 +60,7 @@ class Wizard extends React.Component {
         FD.append(name, values[name])
       }
       const xhr = new XMLHttpRequest()
-      xhr.open('POST', 'api/form') 
+      xhr.open('POST', '/form') 
       xhr.send(FD)
       return onSubmit(values);
     } else {

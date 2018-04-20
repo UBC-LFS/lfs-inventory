@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import SearchBar from './components/SearchBar'
-import SearchResults from './components/Search'
+import SearchBar from './searchForm/SearchBar'
+import {loadSearch, loadVersions} from './services/formDataService'
 //import './css/Search.css'
 
-class SearchForm extends Component {
+export default class SearchForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       searchText:'',
+      searchVersionID:'',
       searchFields:[],
-      loading: true,
+      loading: true
     }
-  };
-  
-  onChange(e) {
-    this.setState({searchText: e.target.value});
   }
   
-  getResults() {
-    calltodb(searchText).then(e => {
-      this.setState({searchResults: e.value})
-    });
+  handleChange = (e) => {
+    this.setState({ searchText: e.target.value })
+  }
+
+  handleClick = (e) => {
+    console.log("text ", this.state.searchText)
+    //loadSearch(e.target.value)
+    console.log("handleClick")
   }
 
   render () {
@@ -30,11 +31,8 @@ class SearchForm extends Component {
         <div className="headerBar">
           <h1>LFS Inventory Form: Search</h1>
         </div>
-        <SearchBar />
-        <SearchResults />
+        <SearchBar searchText={this.state.searchText} onClick={this.handleClick} onChange={this.handleChange}/>
       </div>
     )
   }
 }
-
-export default SearchForm;

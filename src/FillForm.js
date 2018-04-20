@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 //import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 // import ReactDOM from 'react-dom';
-// import Example from './components/Example';
-// import Basic from './components/Form'
-import Multi from './components/MultiStep'
-import ProgressBar from './components/ProgressBar'
+// import Basic from './createForm/Form'
+import Multi from './createForm/MultiStep'
+import ProgressBar from './progressbar/ProgressBar'
 import './css/FillForm.css'
 
 class FillForm extends Component {

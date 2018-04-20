@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import SearchForm from './SearchForm'
+import FillForm from './FillForm'
 
 
 class App extends Component {
@@ -24,7 +26,6 @@ class App extends Component {
         </div>
           <SearchForm />
           <FillForm />
-          <UpdateForm />
       </div>
     )
   }

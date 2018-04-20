@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
-
-class SearchForm extends Component {
+class UpdateFields extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,7 +9,7 @@ class SearchForm extends Component {
     }
   };
 
-  changeText(searchText) {
+  updateSearch(searchText) {
     this.setState({searchText});
     console.log('CURRENT TEXT IS: ', {searchText});
   }
@@ -19,10 +18,12 @@ class SearchForm extends Component {
     return (
       <div class="search-bar">
         <form>
-          <input type="text" placeholder={this.state.initialState} onChange={this.changeText.bind(this, 'searchText')} />
-          <button onClick={this.changeText.bind(this, 'searchText')}>Search</button>
+          <input type="text" placeholder={this.state.initialState} onChange={this.updateSearch.bind(this, 'searchText')} />
+          <button onClick={this.updateSearch.bind(this, 'searchText')}>Search</button>
         </form>
       </div>  
     );
   }
 }
+
+export default UpdateFields;
