@@ -4,6 +4,8 @@ import SearchBar from './searchForm/SearchBar'
 import {loadSearch, loadVersions} from './services/formDataService'
 //import './css/Search.css'
 
+
+
 export default class SearchForm extends Component {
   constructor(props) {
     super(props)
@@ -21,7 +23,9 @@ export default class SearchForm extends Component {
 
   handleClick = (e) => {
     console.log("text ", this.state.searchText)
-    //loadSearch(e.target.value)
+    const encodedValue = encodeURIComponent(this.state.searchText)
+    console.log("encodedValue ", encodedValue)
+    loadSearch(encodedValue)
     console.log("handleClick")
   }
 
