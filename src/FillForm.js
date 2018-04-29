@@ -20,6 +20,7 @@ class FillForm extends Component {
   };
 
   onHandleNext = (event) => {
+    console.log("handling next")
   };
 
   render () {

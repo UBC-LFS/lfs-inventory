@@ -1,77 +1,63 @@
 import React, { Component } from 'react'
 import SearchForm from './SearchForm'
 import FillForm from './FillForm'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      globalStep:0,
-      query: '',
-      isNewEntry: false,
-      isSearchOrUpdate: false,
-    }
-  };
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       globalStep:0,
+//     }
+//   };
 
-  onHandlePrev = (event) => {
-    console.log("handling prev")
-  };
+//   onHandlePrev = (event) => {
+//     console.log("handling prev")
+//   };
 
-  onHandleNext = (event) => {
-    console.log("handling next")
-  };
+//   onHandleNext = (event) => {
+//     console.log("handling next")
+//   };
 
-  handleClick = (event) => {
-    if (event === 1) {
-      this.setState({
-        query: '/form',
-      });
-    } else if (event === 2) {
-      this.setState({
-        query: '/search',
-      });
-    }
-    window.location = this.state.query
-  };
+//   render () {
+//     return (
+//       <div className='App navbar expand'>
+//         <div className="headerBar">
+//           <h1>LFS Inventory Form</h1>
+//         </div>
+//       </div>
+//     )
+//   }
+// }
 
-
-  NoMatch = () => (
-    <p>No Match</p>
-  );
-
-  render () {
-    if(this.state.isNewEntry){
-      return <FillForm/>;
-    }
-    if(this.state.isSearchOrUpdate){
-      return <SearchForm/>;
-    }
-    return (
-      <div className='App navbar expand'>
-        <div className="headerBar">
-          <h1>LFS Inventory Form</h1>
-        </div>
-          <button handleClick={this.handleClick(1)} className="button">New Entry</button>
-          <button handleClick={this.handleClick(2)} className="button">Search Or Update</button>
-      </div>
-    )
-  }
-}
-
-
-
-/*
-const RoutedApp = () => (
-  <BrowserRouter>
-    <Switch>
-        <Route exact path='/' component={App} />
-        <Route path="/form" component={FillForm} />       
-        <Route path="/search" component={SearchForm} />   
-        <Route path="/search/:searchTerm" component={SearchForm} />  
-        <Route path="/search/version?:entryID" component={SearchForm} />   
-        <Route path="/*" component={NoMatch} />   
-      </Switch>   
-  </BrowserRouter>
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
 );
-*/
+
+const App = () => (
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/newentry">New Entry</Link>
+        </li>
+        <li>
+          <Link to="/searchorupdate">Search Or Update</Link>
+        </li>
+      </ul>
+
+      <hr />
+
+      <Route exact path="/" component={Home} />
+      <Route path="/newentry" component={FillForm} />
+      <Route path="/searchorupdate" component={SearchForm} />
+    </div>
+  </Router>
+);
+
 export default App
