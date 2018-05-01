@@ -9,15 +9,20 @@ class SearchForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      searchField:'',
       searchText:'',
       searchVersionID:'',
-      searchFields:[],
       loading: true
     }
   }
   
   handleChange = (e) => {
     this.setState({ searchText: e.target.value })
+  }
+
+  handleSelect = (e) => {
+    console.log("handleSelect", e.target.value)
+    this.setState({ searchField: e.target.value })
   }
 
   handleClick = (e) => {
@@ -28,19 +33,13 @@ class SearchForm extends Component {
     console.log("handleClick")
   }
 
-  getSearchFields() {
-    let terms = loadSearchFields()
-    console.log("terms ", terms)
-    this.setState({ searchFields: terms})
-  }
-
   static defaultProps = {
     tableSearchTerms: ['date', 'id', 'user']
   }
 
   render () {
     let searchTermOptions = this.props.tableSearchTerms.map(searchTerm => {
-      return <option key={searchTerm} value="searchTerm">{searchTerm}</option>
+      return <option key={searchTerm} value={searchTerm}>{searchTerm}</option>
     });
 
     return (
@@ -49,10 +48,10 @@ class SearchForm extends Component {
           <h1>LFS Inventory Form: Search</h1>
         </div>
         <label> Search Field </label><br />
-        <select className='search-dropdown' ref ="searchTermOptions">
+        <select className='search-dropdown' ref ="searchTermOptions" onChange={this.handleSelect}>
             {searchTermOptions}
         </select>
-         <SearchBar searchText={this.state.searchText} onClick={this.handleClick} onChange={this.handleChange}/>
+         <SearchBar searchField={this.state.searchField} searchText={this.state.searchText} onClick={this.handleClick} onChange={this.handleChange}/>
       </div>
     )
   }
