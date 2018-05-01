@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import ProgressBar from '../progressbar/ProgressBar'
-import '../../css/helper.css';
+import '../../css/multistep.css';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 

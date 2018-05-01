@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import SearchBar from './SearchBar'
-import {loadSearch, loadVersions, loadSearchFields} from '../../services/formDataService'
+import SearchBar from './Components/formSearch/SearchBar'
+import {loadSearch, loadVersions, loadSearchFields} from './services/formDataService'
 //import './css/Search.css'
 
 export default class SearchForm extends Component {

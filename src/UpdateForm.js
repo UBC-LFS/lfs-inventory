@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import SearchBar from '../formSearch/SearchBar'
-import SearchResults from '../formSearch/SearchForm'
-import UpdateFields from './Update'
+import SearchBar from './Components/formSearch/SearchBar'
+import SearchResults from './Components/formSearch/SearchForm'
+import UpdateFields from './Components/formUpdate/Update'
 //import './css/Update.css'
 
 class UpdateForm extends Component {

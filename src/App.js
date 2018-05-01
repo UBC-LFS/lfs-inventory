@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import SearchForm from './Components/formSearch/SearchForm'
-import FillForm from './Components/formCreation/FillForm'
+import SearchForm from './SearchForm'
+import FillForm from './FillForm'
 import Sidebar from './Sidebar'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -18,16 +18,14 @@ const Home = () => (
 const App = () => (
   <Router>
     <div>
+       <title> LFS Inventory Client </title>
         <li>
-          <title> LFS Inventory Client </title>
           <Link to="/">Home</Link>
         </li>
         <li>
-          <title> LFS Inventory Client </title>
           <Link to="/newentry">New Entry</Link>
         </li>
         <li>
-          <title> LFS Inventory Client </title>
           <Link to="/searchorupdate">Search Or Update</Link>
         </li>
 
