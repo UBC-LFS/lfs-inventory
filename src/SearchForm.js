@@ -4,7 +4,8 @@ import SearchBar from './Components/formSearch/SearchBar'
 import {loadSearch, loadVersions, loadSearchFields} from './services/formDataService'
 //import './css/Search.css'
 
-export default class SearchForm extends Component {
+class SearchForm extends Component {
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -33,14 +34,28 @@ export default class SearchForm extends Component {
     this.setState({ searchFields: terms})
   }
 
+  static defaultProps = {
+    tableSearchTerms: ['date', 'id', 'user']
+  }
+
   render () {
+    let searchTermOptions = this.props.tableSearchTerms.map(searchTerm => {
+      return <option key={searchTerm} value="searchTerm">{searchTerm}</option>
+    });
+
     return (
       <div className='App navbar expand'>
         <div className="headerBar">
           <h1>LFS Inventory Form: Search</h1>
         </div>
-        <SearchBar searchText={this.state.searchText} onClick={this.handleClick} onChange={this.handleChange}/>
+        <label> Search Field </label><br />
+        <select className='search-dropdown' ref ="searchTermOptions">
+            {searchTermOptions}
+        </select>
+         <SearchBar searchText={this.state.searchText} onClick={this.handleClick} onChange={this.handleChange}/>
       </div>
     )
   }
 }
+
+export default SearchForm
