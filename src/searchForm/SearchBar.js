@@ -10,7 +10,7 @@ export default class SearchBar extends Component {
     this.handleChange = this.props.onChange.bind(this)
     this.handleClick = this.props.onClick.bind(this)
   };
-  
+
   render() {
     return (
       <div className="search-bar">

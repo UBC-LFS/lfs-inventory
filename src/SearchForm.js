@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import SearchBar from './searchForm/SearchBar'
-import {loadSearch, loadVersions} from './services/formDataService'
+import {loadSearch, loadVersions, loadSearchFields} from './services/formDataService'
 //import './css/Search.css'
-
-
 
 export default class SearchForm extends Component {
   constructor(props) {
@@ -27,6 +25,12 @@ export default class SearchForm extends Component {
     console.log("encodedValue ", encodedValue)
     loadSearch(encodedValue)
     console.log("handleClick")
+  }
+
+  getSearchFields() {
+    let terms = loadSearchFields()
+    console.log("terms ", terms)
+    this.setState({ searchFields: terms})
   }
 
   render () {

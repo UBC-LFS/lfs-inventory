@@ -1,8 +1,8 @@
 import fetchJSON from './fetch'
 
-const loadSearch = (searchTerm) => fetchJSON('search/' + searchTerm)
+const loadSearch = (searchField, searchTerm) => fetchJSON('search/' + searchField + '=' + searchTerm)
 const loadVersions = (entryID) => fetchJSON('versions/' + entryID)
-
+const loadSearchFields = () => fetchJSON('search/')
 
 /* EXAMPLE
 export const fetchGetById = ( myid ) => {
@@ -24,5 +24,6 @@ export const fetchGetById = ( myid ) => {
 
 export {
   loadSearch,
-  loadVersions
+  loadVersions,
+  loadSearchFields
 }
