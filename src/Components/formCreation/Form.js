@@ -2,7 +2,7 @@
 import React from 'react';
 import { withFormik } from 'formik';
 
-import '../css/helper.css';
+import '../../css/helper.css';
 
 // Inner form component which receives the form's state and updater methods as props
 const InnerForm = ({

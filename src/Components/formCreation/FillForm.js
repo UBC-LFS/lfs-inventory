@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 
 // import ReactDOM from 'react-dom';
 // import Basic from './createForm/Form'
-import Multi from './createForm/MultiStep'
-import ProgressBar from './progressbar/ProgressBar'
-import './css/FillForm.css'
+import Multi from './/MultiStep'
+import ProgressBar from '../progressbar/ProgressBar'
+import '../../css/FillForm.css'
 
 class FillForm extends Component {
   constructor(props) {
