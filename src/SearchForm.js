@@ -12,7 +12,8 @@ class SearchForm extends Component {
       searchField:'',
       searchText:'',
       searchVersionID:'',
-      loading: true
+      warning: '',
+      disabled: true
     }
   }
   
@@ -21,8 +22,16 @@ class SearchForm extends Component {
   }
 
   handleSelect = (e) => {
-    console.log("handleSelect", e.target.value)
+    console.log("handleSelect searchField", e.target.value)
     this.setState({ searchField: e.target.value })
+    if (e.target.value === '--') {
+      this.setState({ disabled: true })
+      this.setState({ warning: 'Please select a search field'})
+    } else {
+      this.setState({ disabled: false })
+      this.setState({ warning: ''})
+      console.log("HI HI search bar disabled: ", this.state.disabled)
+    }
   }
 
   handleClick = (e) => {
@@ -34,7 +43,7 @@ class SearchForm extends Component {
   }
 
   static defaultProps = {
-    tableSearchTerms: ['date', 'id', 'user']
+    tableSearchTerms: ['--', 'date', 'id', 'user']
   }
 
   render () {
@@ -51,7 +60,8 @@ class SearchForm extends Component {
         <select className='search-dropdown' ref ="searchTermOptions" onChange={this.handleSelect}>
             {searchTermOptions}
         </select>
-         <SearchBar searchField={this.state.searchField} searchText={this.state.searchText} onClick={this.handleClick} onChange={this.handleChange}/>
+        <div className="warning" >{this.state.warning}</div>
+         <SearchBar searchField={this.state.searchField} disabled={this.state.disabled} searchText={this.state.searchText} onClick={this.handleClick} onChange={this.handleChange}/>
       </div>
     )
   }
