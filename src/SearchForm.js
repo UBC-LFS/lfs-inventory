@@ -34,12 +34,26 @@ class SearchForm extends Component {
   }
 
   static defaultProps = {
-    tableSearchTerms: ['date', 'id', 'user']
+    tableSearchTerms: ['--', 'Entry ID',
+                        , 'ID', 'User', 'Date', 'Date modified' 
+                        ,'Asset name', 'Asset model number', 'Asset specs' 
+                        ,'Asset serial number', 'Asset tag', 'Asset owner'
+                        ,'Model year', 'Speed chart', 'Vendor', 'JV number'
+                        ,'Date purchased',  'Current user', 'Previous user'
+                        ,'Asset location', 'Disposal date', 'Method of disposal'
+                        ,'User type', 'Unit affiliation', 'Cost'],
+
+    tableOrder: [ 'default', 'increasing', 'decreasing']
   }
+
 
   render () {
     let searchTermOptions = this.props.tableSearchTerms.map(searchTerm => {
       return <option key={searchTerm} value={searchTerm}>{searchTerm}</option>
+    });
+
+    let orderBy = this.props.tableOrder.map(orderTerm => {
+      return <option key={orderTerm} value={orderTerm}>{orderTerm}</option>
     });
 
     return (
@@ -51,7 +65,15 @@ class SearchForm extends Component {
         <select className='search-dropdown' ref ="searchTermOptions" onChange={this.handleSelect}>
             {searchTermOptions}
         </select>
-         <SearchBar searchField={this.state.searchField} searchText={this.state.searchText} onClick={this.handleClick} onChange={this.handleChange}/>
+        <label> Order By </label><br />
+        <select className='search-dropdown' ref ="searchTermOptions" onChange={this.handleSelect}>
+            {searchTermOptions}
+        </select>
+        <select className='search-dropdown' ref ="searchTermOptions" onChange={this.handleSelect}>
+            {orderBy}
+        </select>
+        <div className="warning" >{this.state.warning}</div>
+         <SearchBar searchField={this.state.searchField} disabled={this.state.disabled} searchText={this.state.searchText} onClick={this.handleClick} onChange={this.handleChange}/>
       </div>
     )
   }
